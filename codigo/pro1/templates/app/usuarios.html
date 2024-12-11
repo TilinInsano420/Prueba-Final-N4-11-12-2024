@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/listado.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+</head>
+<body class="container">
+    <div class="header">
+        <h1>Listado de Usuarios</h1>
+    </div>
+    
+    {% if usuarios %}
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Número Contacto</th>
+                <th>Correo</th>
+                <th>Dirección</th>
+                <th>Rut</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.apellido }}</td>
+                <td>{{ usuario.numero }}</td>
+                <td>{{ usuario.correo }}</td>
+                <td>{{ usuario.direccion }}</td>
+                <td>{{ usuario.rut }}</td>
+                <td>
+                    <a href="/actualizarUsuario/{{ usuario.id }}" class="btn btn-update">Actualizar</a>
+                    <a href="/eliminarUsuario/{{ usuario.id }}" class="btn btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="no-records">No hay usuarios registrados</div>
+    {% endif %}
+
+    <div class="footer">
+        <a href="/agregarUsuario/" class="btn btn-add">Agregar Usuario</a>
+        <a href="../listado" class="btn btn-secondary">Mascotas</a>
+        <a href="/consultas/" class="btn btn-secondary">Consultas</a>
+        <a href="../" class="btn btn-back">Volver</a>
+    </div>
+</body>
+</html>

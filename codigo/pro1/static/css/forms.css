@@ -1,0 +1,132 @@
+body.container {
+    background-color: #00002E;
+    color: #6098FF;
+    font-family: sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.header h1 {
+    font-size: 1.8em;
+    color: #6098FF;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    display: block;
+}
+
+
+.form-container {
+    max-width: 500px;
+    width: 50%;
+    background-color: #111;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin: auto;
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    color: #6098FF;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #222;
+    color: #fff;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #6098FF;
+    outline: none;
+}
+
+
+.error-message {
+    color: #FF4C4C;
+    font-size: 0.85em;
+    margin-top: 5px;
+}
+
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.button-group a, .button-group input[type="submit"] {
+    flex: 1 1 calc(33% - 10px);
+    text-align: center;
+    position: relative;
+    padding: 15px;
+    font-family: sans-serif;
+    color: #00002E;  
+    background: #fff;  
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s, background-color 0.4s;
+}
+
+
+.btn-submit, .btn-link {
+    padding: 15px 20px;
+    color: #00002E;  
+    background-color: #fff;
+    background: none;
+}
+
+.btn-submit::before, .btn-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #6098FF;  
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.08, 0.35, 0.13, 1.02);
+    z-index: -1;
+}
+
+.btn-submit:hover::before, .btn-link:hover::before {
+    transform: scaleX(1);
+    transform-origin: right;
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-link:hover, .btn-submit:hover {
+    color: #fff;  
+    background-color: #6098FF;  
+}

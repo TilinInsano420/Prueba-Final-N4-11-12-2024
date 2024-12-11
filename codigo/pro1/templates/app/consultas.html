@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/listado.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas</title>
+</head>
+<body class="container">
+    <div class="header">
+        <h1>Listado de Consultas</h1>
+    </div>
+
+    {% if consultas %}
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Sucursal</th>
+                <th>Veterinario</th>
+                <th>Diagnóstico</th>
+                <th>Mascota</th>
+                <th>ID Mascota</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for consulta in consultas %}
+            <tr>
+                <td>{{ consulta.fecha }}</td>
+                <td>{{ consulta.sucursal }}</td>
+                <td>{{ consulta.veterinario }}</td>
+                <td>{{ consulta.diagnostico }}</td>
+                <td>{{ consulta.id_mascota.nombre }}</td>
+                <td>{{ consulta.id_mascota }}</td>
+                <td>
+                    <a href="/actualizarConsulta/{{ consulta.id }}" class="btn btn-update">Actualizar</a>
+                    <a href="/eliminarConsulta/{{ consulta.id }}" class="btn btn-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="no-records">No hay consultas registradas</div>
+    {% endif %}
+
+    <div class="footer">
+        <a class="btn btn-add" href="/agregarConsulta/">Agregar Consulta</a>
+        <a href="../listado" class="btn btn-secondary">Mascotas</a>
+        <a href="/usuarios/" class="btn btn-secondary">Usuarios</a>
+        <a class="btn btn-back" href="../">Volver</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/listado.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Mascotas</title>
+</head>
+<body class="container">
+    <div class="header">
+        <h1>Listado de Mascotas</h1>
+    </div>
+
+    {% if modelos %}
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Raza</th>
+                <th>Edad</th>
+                <th>Fecha de nacimiento</th>
+                <th>Dueño</th>
+                <th>ID Dueño</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for model in modelos %}
+            <tr>
+                <td>{{ model.nombre }}</td>
+                <td>{{ model.tipo }}</td>
+                <td>{{ model.raza }}</td>
+                <td>{{ model.edad }}</td>
+                <td>{{ model.fecha_nacimiento }}</td>
+                <td>{{ model.id_usuario.nombre }}</td>
+                <td>{{ model.id_usuario }}</td>
+                <td class="action-buttons">
+                    <a href="/actualizar/{{ model.id }}" class="btn btn-update">Actualizar</a>
+                    <a href="/eliminar/{{ model.id }}" class="btn btn-delete" onclick="return confirm('¿Estás seguro de que deseas eliminar esta mascota?')">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="no-records">No hay mascotas registradas</div>
+    {% endif %}
+
+    <div class="footer">
+        <a href="../agregar" class="btn btn-add">Agregar Mascota</a>
+        <a href="/usuarios/" class="btn btn-secondary">Usuarios</a>
+        <a href="/consultas/" class="btn btn-secondary">Consultas</a>
+        <a href="../" class="btn btn-back">Volver</a>
+    </div>
+</body>
+</html>

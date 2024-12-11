@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+</head>
+<body class="container">
+    <div class="header">
+        <h1>{{ titulo }}</h1>
+    </div>
+    <form method="POST" class="form-container">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label>Mascota</label>
+            {{ form.id_mascota }}
+            {% if form.id_mascota.errors %}
+                <div class="error-message">{{ form.id_mascota.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>Fecha</label>
+            {{ form.fecha }}
+            {% if form.fecha.errors %}
+                <div class="error-message">{{ form.fecha.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>Sucursal</label>
+            {{ form.sucursal }}
+            {% if form.sucursal.errors %}
+                <div class="error-message">{{ form.sucursal.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>Veterinario</label>
+            {{ form.veterinario }}
+            {% if form.veterinario.errors %}
+                <div class="error-message">{{ form.veterinario.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>Diagnóstico</label>
+            {{ form.diagnostico }}
+            {% if form.diagnostico.errors %}
+                <div class="error-message">{{ form.diagnostico.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="button-group">
+            <a href="/consultas/" class="btn-link">Volver</a>
+            <input type="submit" value="{{ boton_texto }}" class="btn-submit">
+        </div>
+    </form>
+</body>
+</html>
