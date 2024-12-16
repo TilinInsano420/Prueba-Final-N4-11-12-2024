@@ -81,9 +81,11 @@ WSGI_APPLICATION = 'pro1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'veterinaria',
-        'USER': 'root',
-        'PASSWORD': ''
+        'HOST': 'database-3.c5km2iimkc8x.us-east-2.rds.amazonaws.com',
+        'NAME': 'vet',
+        'USER': 'admin',
+        'PASSWORD': 'jordan123',
+        'PORT': '3306'
     }
 }
 
